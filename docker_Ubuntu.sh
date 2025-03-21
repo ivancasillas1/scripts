@@ -19,10 +19,11 @@ systemctl status docker --no-pager
 
 echo "🛠️ Agregando el usuario actual al grupo Docker..."
 if [ -n "$SUDO_USER" ]; then
-    usermod -aG docker $SUDO_USER
+    usermod -aG docker "$SUDO_USER"
     echo "⚠️ Para aplicar los cambios de grupo, cierra sesión y vuelve a iniciar sesión."
 else
-    echo "⚠️ No se pudo determinar el usuario que ejecutó sudo. Agrega manualmente tu usuario al grupofi
+    echo "⚠️ No se pudo determinar el usuario que ejecutó sudo. Agrega manualmente tu usuario al grupo docker con: sudo usermod -aG docker <tu_usuario>"
+fi
 
 echo "🐳 Verificando instalación de Docker..."
 docker --version
